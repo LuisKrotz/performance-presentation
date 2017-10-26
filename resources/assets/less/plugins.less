@@ -1,0 +1,29 @@
+// PLUGINS
+
+
+// Lazy Load
+
+.b-lazy {
+    transition: opacity 1s ease-in, transform .5s ease-in;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: @color-black;
+    max-width: 100%;
+    opacity: .3;
+    transform: scale(2);
+
+    .query-phablet({
+        transform: scale(1.25);
+    });
+}
+
+.b-lazy.b-error {
+    opacity: .6;
+}
+
+.b-lazy.b-loaded {
+    background-color: transparent;
+    opacity: 1;
+    transform: scale(1);
+}

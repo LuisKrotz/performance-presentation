@@ -1,0 +1,37 @@
+// Modal
+.modal {
+    &-origin,
+    &-destiny {
+        background-color: @color-white;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+
+    &-origin {
+        position: relative;
+        transition: position ease-in-out 0s;
+        transition-delay: (@modal-position-time *2);
+
+        .modal-active & {
+            
+            position: fixed;
+            z-index: -1;
+        }
+    }
+
+    &-destiny {
+        position: fixed;
+        opacity: 0;
+        transform: translateY(100vh);
+        transition: opacity @modal-position-time ease-in-out, transform @modal-position-time ease-in-out, position 0s linear @modal-position-time;
+
+        .modal-active & {
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

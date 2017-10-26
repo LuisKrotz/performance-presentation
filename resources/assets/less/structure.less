@@ -1,0 +1,352 @@
+// STRUCTURES
+
+// Body reset
+
+body,
+html {
+    position: relative;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+body {
+    font-family: @fnt-family;
+    font-size: @fnt-size;
+    font-weight: @fnt-default;
+    line-height: 1em;
+    color: @color-black;
+
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &:after {
+        display: none;
+        content: "fullhd";
+
+        .query-notebook({
+            content: "notebook";
+        });
+
+        .query-menu-collapsed({
+            content: "notebook";
+        });
+
+        .query-tablet({
+            content: "tablet";
+        });
+
+        .query-phablet({
+            content: "phablet";
+        });
+
+        .query-mobile({
+            content: "mobile";
+        });
+
+        .query-mobile2({
+            content: "mobile";
+        });
+
+        .query-mobile3({
+            content: "mobile";
+        });
+    }
+
+    .query-menu-collapsed({
+        overflow-x: hidden;
+    });
+}
+
+svg {
+    g,
+    path,
+    rect {
+        shape-rendering: optimizeGeometry;
+    }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+
+  .query-phablet({
+      width: 0;
+  });
+
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: @color-black-medium;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// Remove text-shadow in selection highlight:
+// https://twitter.com/miketaylr/status/12228805301
+// These selection rule sets have to be separate.
+// Customize the background color to match your design.
+
+::-moz-selection {
+    background: @selection-color;
+    text-shadow: none;
+}
+
+::selection {
+    background: @selection-color;
+    text-shadow: none;
+}
+
+
+// A better looking default horizontal rule
+
+hr {
+    margin-top: @ln-body-desk;
+    margin-bottom: @ln-body-desk;
+    border: 0;
+    display: block;
+    border-top: 1px solid @color-black;
+    padding: 0;
+}
+
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+
+// Remove default fieldset styles.
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+// Allow only vertical resizing of textareas.
+
+textarea {
+    resize: none;
+}
+
+
+// Links
+
+a {
+    color: @color-black;
+    text-decoration: none;
+}
+
+// Text
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+b,
+strong {
+    font-weight: @fnt-bold;
+    color: @color-black;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+// Buttons
+button,
+select {
+    .reset-button();
+    .button-default(@color-black);
+}
+
+// List
+ul,
+ol {
+    .reset-list();
+}
+
+
+// Accessibility
+
+// Hide only visually, but have it available for screen
+// readers: http://goo.gl/issAvx
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+// Extends the .visuallyhidden class to allow the element
+// to be focusable when navigated to via the keyboard:
+// https://www.drupal.org/node/897638
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+// Clearfix
+
+.clearfix {
+    .clearfix();
+}
+
+
+// Typography
+
+.prevent-FOUT {
+	visibility: hidden;
+
+	.show-font & {
+		visibility: inherit;
+	}
+}
+
+
+// Hide Elements
+// Slow Network Conditions
+// Do not remove this !impotant statement
+// This Lines are intended to break the css flow on purpose
+
+video {
+    .slow-network-speed & {
+        display: none !important;
+    }
+}
+
+.fallback {
+    display: none;
+
+    .slow-network-speed & {
+        display: block;
+    }
+}
+
+.hide-on-desktop {
+    display: none;
+
+    .query-phablet({
+        display: block;
+    });
+
+    &.fallback {
+        display: none;
+
+        .slow-network-speed & {
+            display: none;
+
+            .query-phablet({
+                display: block;
+            });
+        }
+    }
+}
+
+.hide-on-mobile {
+    display: block;
+
+    .query-phablet({
+        display: none;
+    });
+
+    &.fallback {
+        display: none;
+
+        .slow-network-speed & {
+            display: block;
+
+            .query-phablet({
+                display: none;
+            });
+        }
+    }
+}
+
+.hide-on-mobile-1366 {
+    display: none;
+
+    .query-notebook({
+        display: block;
+    });
+
+    .query-phablet({
+        display: none;
+    });
+
+    &.fallback {
+        display: none;
+
+        .slow-network-speed & {
+            display: none;
+
+            .query-notebook({
+                display: block;
+            });
+
+            .query-phablet({
+                display: none;
+            });
+        }
+    }
+}
+
+.hide-on-mobile-1920 {
+    display: block;
+
+    .query-notebook({
+        display: none;
+    });
+
+    &.fallback {
+        display: none;
+
+        .slow-network-speed & {
+            display: block;
+
+            .query-notebook({
+                display: none;
+            });
+
+            .query-phablet({
+                display: none;
+            });
+        }
+    }
+}
