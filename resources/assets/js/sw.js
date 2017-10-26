@@ -13,7 +13,7 @@ var offlineFundamentals = [
   '/css/app/app.min-767.css',
   '/css/app/app.min-640.css',
   '/css/app/app.min-375.css',
-  '/js/min.min.js',
+  '/js/base.min.js',
   '/js/app.min.js'
 ];
 

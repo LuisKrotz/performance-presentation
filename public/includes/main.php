@@ -3,5 +3,5 @@
     <h2>Origin</h2>
   </article>
 
-  <article class="modal-destiny"></article>
+  <article id="postDestiny" class="modal-destiny"></article>
 </main>

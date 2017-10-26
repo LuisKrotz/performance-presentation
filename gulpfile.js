@@ -100,6 +100,7 @@ gulp.task('base', function () {
 
 gulp.task('scripts', function () {
     return gulp.src(['./resources/assets/js/vendor/blazy-1.8.2.min.js',
+                    './resources/assets/js/vendor/jquery-3.2.1.min.js',
                     './resources/assets/js/analytics.js',
                     './resources/assets/js/app.js',
                     './resources/assets/js/components/*.js'])
