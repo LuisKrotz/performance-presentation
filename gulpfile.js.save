@@ -1,0 +1,65 @@
+var LessAutoprefix = require('less-plugin-autoprefix'),
+    gulp = require('gulp'),
+    sourcemaps = require('gulp-sourcemaps'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglifyjs'),
+    less = require('gulp-less'),
+    cleanCSS = require('gulp-clean-css'),
+    path = require('path');
+
+var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
+
+gulp.task('watch', function () {
+    gulp.watch(['./resources/assets/less/*.less', './resources/assets/less/**/*.less', './resources/assets/js/*', './resources/assets/js/**/*'], ['less', 'minify-css', 'scripts', 'where']);
+});
+
+gulp.task('minify-css', () => {
+    return gulp.src(['./resources/vendor/css/*.css', 'public/css/app.css'])
+        .pipe(concat('coza.min.css'))
+        .pipe(cleanCSS({ debug: true }, function (details) {
+            console.log('');
+            console.log('Uncompressed styles size:   ' + details.stats.originalSize);
+            console.log('Compressed styles size:     ' + details.stats.minifiedSize);
+            console.log('Stylesheet file name:       ' + details.name);
+            console.log('');
+            console.log('');
+        }))
+        .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('less', function () {
+    return gulp.src(['./resources/assets/less/app.less'])
+        .pipe(sourcemaps.init())
+        .pipe(less({
+            paths: [path.join(__dirname, 'less', 'includes')],
+            plugins: [autoprefix]
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('scripts', function () {
+    return gulp.src(['./resources/assets/js/vendor/modernizr 3.5.0.min.js',
+                    './resources/assets/js/vendor/blazy-1.8.2.min.js',
+                    './resources/assets/js/vendor/jquery-3.2.1.min.js',
+                    './resources/assets/js/vendor/webfont-1.6.26.js',
+                    './resources/assets/js/config.js',
+                    './resources/assets/js/app.js',
+                    './resources/assets/js/components/*.js'])
+        .pipe(sourcemaps.init())
+        .pipe(concat('coza.min.js'))
+        .pipe(sourcemaps.write())
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/js/'));
+});
+
+gulp.task('where', function () {    return gulp.src(['./resources/assets/js/where.js',
+                     './resources/assets/js/libs/markerclusterer.js'])
+        .pipe(sourcemaps.init())
+        .pipe(concat('coza-where.min.js'))
+        .pipe(sourcemaps.write())
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/js/'));
+});
+
+gulp.task('default', ['scripts', 'where', 'less', 'minify-css']);

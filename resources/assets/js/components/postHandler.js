@@ -119,6 +119,8 @@
 
             var href = $(this).attr("href");
 
+            console.log(href)
+
             modalOpen();
             postHandler(href);
             Globals.Util.track('Modal Open', 'click', href);

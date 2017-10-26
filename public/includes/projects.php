@@ -14,7 +14,7 @@
     </div>
 
     
-    <h2> Destiny - Yeld content Here </h2>
+    <h2> Destiny - Projects </h2>
 
 
     <div style="display:none">

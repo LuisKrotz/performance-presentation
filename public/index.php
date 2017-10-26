@@ -1,4 +1,4 @@
-<?php $uri = $_SERVER['REQUEST_URI']; ?>
+<?php $uri = $_SERVER['REQUEST_URL']; ?>
 <!DOCTYPE html>
 <html lang="EN">
     <head>
