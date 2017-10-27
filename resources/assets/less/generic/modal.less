@@ -12,8 +12,6 @@
 
     &-origin {
         position: relative;
-        transition: position ease-in-out 0s;
-        transition-delay: (@modal-position-time *2);
 
         .modal-active & {
             
@@ -26,10 +24,13 @@
         position: fixed;
         opacity: 0;
         transform: translateY(100vh);
+        //top: 100vh;
         transition: opacity @modal-position-time ease-in-out, transform @modal-position-time ease-in-out, position 0s linear @modal-position-time;
 
         .modal-active & {
-            position: relative;
+            position: absolute;
+            //top: 0;
+            background-color: grey;
             opacity: 1;
             transform: translateY(0);
         }
