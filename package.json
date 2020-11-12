@@ -9,7 +9,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-extract-media-query": "^1.0.0",
     "gulp-less": "^3.3.2",
-    "gulp-sourcemaps": "^2.6.1",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglifyjs": "^0.6.2",
     "less-plugin-autoprefix": "^1.5.1",
     "path": "^0.12.7"
