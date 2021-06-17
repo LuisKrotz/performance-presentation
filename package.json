@@ -8,7 +8,7 @@
     "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-extract-media-query": "^1.0.0",
-    "gulp-less": "^3.3.2",
+    "gulp-less": "^5.0.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglifyjs": "^0.6.2",
     "less-plugin-autoprefix": "^1.5.1",
